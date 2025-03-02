@@ -1,4 +1,4 @@
-# Assistant - Rin: A Powerful Gemini-Powered Virtual Assistant (Testing)
+# Assistant  (Testing) ᓚᘏᗢ
 
 
 <!-- Vietnamese -->
