@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #121212; /* Màu nền tối */
+    color: #e0e0e0; /* Màu chữ sáng */
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #1e1e1e; /* Màu container tối hơn */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1); /* Bóng đổ nhẹ */
+}
+h1 {
+    color: #f8bbd0; /* Màu hồng nhạt cho tiêu đề */
+    text-align: center;
+}
+form {
+    display: flex;
+    margin-bottom: 20px;
+}
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #424242; /* Viền tối */
+    border-radius: 4px 0 0 4px;
+    background-color: #333; /* Nền input tối */
+    color: #e0e0e0; /* Chữ trong input sáng */
+}
+button {
+    background-color: #f8bbd0; /* Màu nút hồng nhạt */
+    color: #333; /* Chữ nút tối */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #e91e63; /* Màu nút đậm hơn khi hover */
+    color: white;
+}
+#output-area {
+    border: 1px solid #424242; /* Viền tối */
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #212121; /* Nền output tối */
+    color: #e0e0e0; /* Chữ output sáng */
+    margin-bottom: 20px;
+    overflow-wrap: break-word;
+}
+.rin-response {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #2a2a2a; /* Nền response tối hơn */
+    border-left: 3px solid #f8bbd0; /* Viền trái hồng nhạt */
+    border-radius: 4px;
+}
+.error-message {
+    color: #ffb3b3; /* Màu đỏ nhạt cho lỗi */
+    margin-top: 10px;
+}
+.output-section {
+    margin-bottom: 20px;
+    border: 1px solid #424242; /* Viền tối */
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #2a2a2a; /* Nền section tối hơn */
+    color: #e0e0e0; /* Chữ section sáng */
+}
+.output-section h3 {
+    color: #f8bbd0; /* Màu hồng nhạt cho tiêu đề section */
+    margin-top: 0;
+}
+.output-section hr {
+    border-top: 1px dashed #424242; /* Viền gạch ngang tối */
+    margin: 10px 0;
+}
+.output-section p {
+    margin: 5px 0;
+}
+pre {
+    background-color: #333; /* Nền pre code tối */
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    color: #e0e0e0; /* Chữ pre code sáng */
+    border: 1px solid #424242; /* Viền pre code tối */
+}
+pre code {
+    font-family: monospace, monospace;
+    display: block;
+}
+.output-code {
+    color: #b9f6ca; /* Màu xanh lá nhạt cho output code */
+}
+.content-code {
+    color: #81d4fa; /* Màu xanh dương nhạt cho content code */
+}
+.code-code {
+    color: #ffcc80; /* Màu cam nhạt cho code code */
+}
+.session-history {
+    margin-top: 20px;
+    border: 1px solid #424242; /* Viền tối */
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #1e1e1e; /* Nền session history tối hơn */
+}
+.session-history h2 {
+    color: #f8bbd0; /* Màu hồng nhạt cho tiêu đề history */
+    margin-top: 0;
+}
+.session-history ul {
+    list-style-type: none;
+    padding: 0;
+}
+.session-history li {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #2a2a2a; /* Nền list item tối hơn */
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(255,255,255,0.05); /* Bóng đổ nhẹ */
+}
+.session-history li strong {
+    color: #f8bbd0; /* Màu hồng nhạt cho strong trong history */
+}

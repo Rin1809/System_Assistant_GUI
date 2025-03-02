@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+*.whl
+
+# Môi trường ảo (Virtual Environment) - RẤT QUAN TRỌNG
+moitruongao/
+venv/
+env/
+
+# File hệ thống (system files)
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# File cấu hình cá nhân (personal configuration files)
+.env      # Chứa các biến môi trường nhạy cảm như API key
+config.ini # Hoặc bất kỳ file cấu hình cá nhân nào khác
+
+# File log
+*.log
+
+# File tạm của IDE/Text Editor
+.vscode/
+.idea/
+
+# File đã tạo của chương trình
+memory/

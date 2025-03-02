@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Rin - Giao diện Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Bot Rin - Tương tác Hệ thống qua Web</h1>
+        <form method="post">
+            <input type="text" name="user_input" placeholder="Nhập lệnh hoặc câu hỏi tại đây" value="{{ user_input if user_input }}">
+            <button type="submit">Gửi</button>
+        </form>
+
+        <div id="output-area">
+            {{ output_text|safe }}
+        </div>
+
+        <div class="session-history">
+            <h2>Lịch sử phiên chat</h2>
+            <ul>
+                {% for message in session_memory %}
+                    <li>
+                        <strong>{{ message.role }}:</strong>
+                        <pre><code style="white-space: pre-wrap;">{{ message.content }}</code></pre>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

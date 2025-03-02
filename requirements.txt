@@ -1,0 +1,11 @@
+Flask
+google-generativeai
+python-docx
+openpyxl
+psutil==5.9.8
+Pygments
+python-magic-bin
+watchdog
+wmi
+rich
+flask[async]
