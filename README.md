@@ -1,4 +1,4 @@
-# Assistant  (Testing) ᓚᘏᗢ
+# Assistant  (Testing - Got bug) ᓚᘏᗢ
 
 
 <!-- Vietnamese -->
@@ -7,12 +7,12 @@
 
 ## Giới thiệu
 
-**Assistant - Rin** là một trợ lý ảo mạnh mẽ được xây dựng bằng Python, tận dụng sức mạnh của mô hình ngôn ngữ lớn (LLM) Gemini từ Google AI.  Rin được thiết kế để thực hiện một loạt các tác vụ đa dạng, bao gồm thực thi mã Python, thực thi các lệnh hệ thống Windows (PowerShell), xử lý các loại tệp tin khác nhau, và tương tác tự nhiên với người dùng thông qua giao diện dòng lệnh.  Điểm nổi bật của Rin là khả năng **tự đánh giá và cải thiện** kết quả thực thi bằng cách sử dụng một mô hình Gemini thứ hai để kiểm tra chéo (cross-checking) và xác thực kết quả.
+**Assistant - Rin** là một trợ lý ảo mạnh mẽ được xây dựng bằng Python, tận dụng sức mạnh của mô hình ngôn ngữ lớn (LLM) Gemini từ Google AI.  Rin được thiết kế để thực hiện một loạt các tác vụ đa dạng, bao gồm thực thi mã Python, thực thi các lệnh hệ thống Windows, Linux, xử lý các loại tệp tin khác nhau, và tương tác tự nhiên với người dùng thông qua giao diện dòng lệnh.  Điểm nổi bật của Rin là khả năng **tự đánh giá và cải thiện** kết quả thực thi bằng cách sử dụng một mô hình Gemini thứ hai để kiểm tra chéo (cross-checking) và xác thực kết quả.
 
 ## Tính năng chính
 
 *   **Thực thi mã Python linh hoạt:** Rin cho phép người dùng yêu cầu thực thi các đoạn mã Python một cách trực tiếp.  Trợ lý sẽ tự động tạo mã, thực thi mã, và trả về kết quả chi tiết, bao gồm đầu ra (stdout), lỗi (stderr), thời gian thực thi, và mã Python đã thực thi.
-*   **Thực thi lệnh hệ thống Windows (PowerShell):** Rin có thể thực thi các lệnh PowerShell trên hệ điều hành Windows.  Trợ lý sử dụng Gemini để tạo lệnh PowerShell dựa trên yêu cầu của người dùng, thực thi lệnh, và trả về kết quả đầy đủ, bao gồm đầu ra, lỗi, mã trả về (return code), và quan trọng nhất là **đánh giá và xác thực từ mô hình Gemini thứ hai**.
+*   **EX: Thực thi lệnh hệ thống Windows (PowerShell):** Rin có thể thực thi các lệnh PowerShell trên hệ điều hành Windows.  Trợ lý sử dụng Gemini để tạo lệnh PowerShell dựa trên yêu cầu của người dùng, thực thi lệnh, và trả về kết quả đầy đủ, bao gồm đầu ra, lỗi, mã trả về (return code), và quan trọng nhất là **đánh giá và xác thực từ mô hình Gemini thứ hai**.
 *   **Xử lý tệp tin đa năng:** Rin cung cấp một loạt các chức năng xử lý tệp tin mạnh mẽ, bao gồm:
     *   Đọc nội dung từ nhiều định dạng tệp tin (text, JSON, CSV, DOCX, XLSX).
     *   Ghi nội dung vào tệp tin.
@@ -168,12 +168,12 @@ Nếu bạn có bất kỳ góp ý, đề xuất tính năng mới, hoặc phát
 
 ## Introduction
 
-**Assistant - Rin** is a powerful, versatile virtual assistant built using Python and powered by Google AI's Gemini large language model (LLM).  Rin is designed to perform a wide array of tasks, including executing Python code, running Windows system commands (PowerShell), handling various file types, and interacting naturally with users through a command-line interface.  A key feature of Rin is its ability to **self-assess and improve** execution results by utilizing a second Gemini model for cross-checking and validation.
+**Assistant - Rin** is a powerful, versatile virtual assistant built using Python and powered by Google AI's Gemini large language model (LLM).  Rin is designed to perform a wide array of tasks, including executing Python code, running on Windows, Linux handling various file types, and interacting naturally with users through a command-line interface.  A key feature of Rin is its ability to **self-assess and improve** execution results by utilizing a second Gemini model for cross-checking and validation.
 
 ## Key Features
 
 *   **Flexible Python Code Execution:** Rin allows users to request the execution of Python code snippets directly.  The assistant automatically generates code, executes it, and returns detailed results, including output (stdout), errors (stderr), execution time, and the executed Python code.
-*   **Windows System Command Execution (PowerShell):** Rin can execute PowerShell commands on the Windows operating system.  The assistant uses Gemini to generate PowerShell commands based on user requests, execute the commands, and return comprehensive results, including output, errors, return code, and most importantly, **assessment and validation from a second Gemini model**.
+*   **EX : Windows System Command Execution (PowerShell):** Rin can execute PowerShell commands on the Windows operating system.  The assistant uses Gemini to generate PowerShell commands based on user requests, execute the commands, and return comprehensive results, including output, errors, return code, and most importantly, **assessment and validation from a second Gemini model**.
 *   **Versatile File Handling:** Rin offers a robust set of file handling capabilities, including:
     *   Reading content from various file formats (text, JSON, CSV, DOCX, XLSX).
     *   Writing content to files.
@@ -329,12 +329,12 @@ If you have any feedback, suggestions for new features, or find any bugs, please
 
 ## 概要
 
-**Assistant - Rin** は、Python で構築され、Google AI の Gemini 大規模言語モデル (LLM) を活用した、強力で多用途な仮想アシスタントです。Rin は、Python コードの実行、Windows システム コマンド (PowerShell) の実行、さまざまなファイル タイプの処理、コマンドライン インターフェイスを介したユーザーとの自然な対話など、幅広いタスクを実行できるように設計されています。Rin の主な特徴は、第 2 の Gemini モデルを利用してクロスチェックと検証を行うことで、実行結果を**自己評価および改善**できることです。
+**Assistant - Rin** は、Python で構築され、Google AI の Gemini 大規模言語モデル (LLM) を活用した、強力で多用途な仮想アシスタントです。Rin は、Python コードの実行、Windows, Linux システム、さまざまなファイル タイプの処理、コマンドライン インターフェイスを介したユーザーとの自然な対話など、幅広いタスクを実行できるように設計されています。Rin の主な特徴は、第 2 の Gemini モデルを利用してクロスチェックと検証を行うことで、実行結果を**自己評価および改善**できることです。
 
 ## 主要機能
 
 *   **柔軟な Python コード実行:** Rin を使用すると、ユーザーは Python コード スニペットの実行を直接要求できます。アシスタントは自動的にコードを生成、実行し、出力 (stdout)、エラー (stderr)、実行時間、実行された Python コードなどの詳細な結果を返します。
-*   **Windows システム コマンド実行 (PowerShell):** Rin は、Windows オペレーティング システムで PowerShell コマンドを実行できます。アシスタントは Gemini を使用して、ユーザーの要求に基づいて PowerShell コマンドを生成、実行し、出力、エラー、戻りコード、そして最も重要なことに、**第 2 の Gemini モデルからの評価と検証**を含む包括的な結果を返します。
+*   **EX : Windows システム コマンド実行 (PowerShell):** Rin は、Windows オペレーティング システムで PowerShell コマンドを実行できます。アシスタントは Gemini を使用して、ユーザーの要求に基づいて PowerShell コマンドを生成、実行し、出力、エラー、戻りコード、そして最も重要なことに、**第 2 の Gemini モデルからの評価と検証**を含む包括的な結果を返します。
 *   **多用途なファイル処理:** Rin は、次のような堅牢なファイル処理機能を提供します。
     *   さまざまなファイル形式 (テキスト、JSON、CSV、DOCX、XLSX) からのコンテンツの読み取り。
     *   ファイルへのコンテンツの書き込み。
