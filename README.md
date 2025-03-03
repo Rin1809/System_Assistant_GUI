@@ -1,486 +1,629 @@
-# Assistant  (Testing - Got bug) ᓚᘏᗢ
+# System_Assistant_GUI - Trợ lý Ảo Cá Nhân Giao Diện Web ᓚᘏᗢ
+
+## I want to know how many user that my computer have, but i forgot the command or where can i check it, ưhat should do?
+![image](https://github.com/user-attachments/assets/d141d003-1d1b-4244-b795-a1f1f141f46e)
 
 
-<!-- Vietnamese -->
 <details>
-  <summary>🇻🇳 Tiếng Việt</summary>
+<summary>🇻🇳 Tiếng Việt</summary>
 
-## Giới thiệu
+## 1. Giới thiệu
 
-**Assistant - Rin** là một trợ lý ảo mạnh mẽ được xây dựng bằng Python, tận dụng sức mạnh của mô hình ngôn ngữ lớn (LLM) Gemini từ Google AI.  Rin được thiết kế để thực hiện một loạt các tác vụ đa dạng, bao gồm thực thi mã Python, thực thi các lệnh hệ thống Windows, Linux, xử lý các loại tệp tin khác nhau, và tương tác tự nhiên với người dùng thông qua giao diện dòng lệnh.  Điểm nổi bật của Rin là khả năng **tự đánh giá và cải thiện** kết quả thực thi bằng cách sử dụng một mô hình Gemini thứ hai để kiểm tra chéo (cross-checking) và xác thực kết quả.
+**System_Assistant_GUI** (tên mã **Rin Web**) là phiên bản giao diện người dùng đồ họa (GUI) trên nền web của dự án **Assistant**. Dự án này vẫn giữ nguyên sức mạnh cốt lõi của trợ lý ảo Rin, sử dụng mô hình ngôn ngữ lớn Gemini, nhưng cung cấp một giao diện web trực quan và dễ tương tác hơn, cho phép người dùng điều khiển và làm việc với Rin thông qua trình duyệt web.
 
-## Tính năng chính
+**Mục tiêu chính của System_Assistant_GUI (Rin Web):**
 
-*   **Thực thi mã Python linh hoạt:** Rin cho phép người dùng yêu cầu thực thi các đoạn mã Python một cách trực tiếp.  Trợ lý sẽ tự động tạo mã, thực thi mã, và trả về kết quả chi tiết, bao gồm đầu ra (stdout), lỗi (stderr), thời gian thực thi, và mã Python đã thực thi.
-*   **EX: Thực thi lệnh hệ thống Windows (PowerShell):** Rin có thể thực thi các lệnh PowerShell trên hệ điều hành Windows.  Trợ lý sử dụng Gemini để tạo lệnh PowerShell dựa trên yêu cầu của người dùng, thực thi lệnh, và trả về kết quả đầy đủ, bao gồm đầu ra, lỗi, mã trả về (return code), và quan trọng nhất là **đánh giá và xác thực từ mô hình Gemini thứ hai**.
-*   **Xử lý tệp tin đa năng:** Rin cung cấp một loạt các chức năng xử lý tệp tin mạnh mẽ, bao gồm:
-    *   Đọc nội dung từ nhiều định dạng tệp tin (text, JSON, CSV, DOCX, XLSX).
-    *   Ghi nội dung vào tệp tin.
-    *   Chỉnh sửa nội dung tệp tin: thay thế, xóa, và thêm văn bản.
-    *   Tạo mã Python mới và lưu vào tệp tin.
-    *   Sửa lỗi cú pháp và logic trong mã Python hiện có.
-    *   Nâng cấp và cải tiến mã Python.
-*   **Tương tác trực tiếp với Gemini:** Người dùng có thể đặt câu hỏi trực tiếp cho mô hình Gemini để nhận được câu trả lời cho các vấn đề chung, không liên quan đến các plugin cụ thể.
-*   **Bộ nhớ (Memory):** Rin có khả năng lưu trữ lịch sử các tương tác, các lệnh đã thực thi, và kết quả vào các tệp tin "memory".  Điều này cho phép người dùng tải lại và sử dụng thông tin từ các phiên làm việc trước đó, giúp tiết kiệm thời gian và tăng tính liên tục.
-*   **Giám sát tệp tin (File Monitoring - Tính năng thử nghiệm):**  Rin có khả năng giám sát sự thay đổi của các tệp tin được chỉ định và thông báo cho người dùng khi có thay đổi.
-*   **Giao diện dòng lệnh thân thiện:**  Tương tác với Rin được thực hiện thông qua giao diện dòng lệnh (command-line interface - CLI) trực quan, với màu sắc và hiệu ứng động (animation) để nâng cao trải nghiệm người dùng.
+- **Trải nghiệm người dùng thân thiện:** Mang đến trải nghiệm tương tác trợ lý ảo mượt mà và trực quan thông qua giao diện web, thay vì dòng lệnh thuần túy.
+- **Dễ dàng truy cập:** Cho phép truy cập trợ lý ảo Rin từ bất kỳ thiết bị nào có trình duyệt web, mở rộng khả năng sử dụng và tính linh hoạt.
+- **Giữ nguyên sức mạnh cốt lõi:** Bảo toàn toàn bộ tính năng mạnh mẽ của phiên bản dòng lệnh (CLI), bao gồm thực thi lệnh hệ thống, chạy mã Python, xử lý file, và tích hợp Gemini AI.
+- **Tùy biến và Mở rộng:**  Tiếp tục hỗ trợ kiến trúc plugin, cho phép mở rộng và tùy chỉnh chức năng dễ dàng.
 
-## Cài đặt
+**System_Assistant_GUI (Rin Web) dành cho:**
 
-1.  **Yêu cầu hệ thống:**
-    *   Python 3.7 trở lên.
-    *   Các thư viện Python (chi tiết trong file `requirements.txt`):
-        *   `google-generativeai`
-        *   `python-magic`
-        *   `psutil`
-        *   `watchdog`
-        *   `pygments`
-        *   `docx` (python-docx)
-        *   `openpyxl`
-        *   `wmi`
-        *   `ctypes`
-        *   `rich`
-        * `Flask`
+- **Người dùng ưa thích giao diện đồ họa:** Mong muốn tương tác với trợ lý ảo qua giao diện web trực quan thay vì dòng lệnh.
+- **Người dùng cần truy cập đa nền tảng:** Muốn sử dụng trợ lý ảo Rin trên nhiều thiết bị (máy tính, máy tính bảng, điện thoại) thông qua trình duyệt web.
+- **Người dùng mới bắt đầu:** Giao diện web có thể giúp người dùng mới làm quen và sử dụng các tính năng của Rin dễ dàng hơn.
 
-2.  **Các bước cài đặt:**
+## 2. Tính năng
 
-    Mở terminal (hoặc Command Prompt trên Windows) và thực hiện các lệnh sau:
+**System_Assistant_GUI (Rin Web)** kế thừa và mở rộng các tính năng của phiên bản dòng lệnh, với giao diện web tập trung vào trải nghiệm người dùng:
 
-    ```bash
-    git clone https://github.comRin1809/System_Assistant_GUI.git 
-    cd "Name folder"
-    python -m venv moitruongao
-    moitruongao\Scripts\activate  # Trên Windows.  Hoặc: source moitruongao/bin/activate (trên Linux/macOS)
-    pip install -r requirements.txt
-    ```
+- **Giao diện Web Trực quan:** Giao diện web đơn giản, dễ sử dụng, cho phép nhập lệnh và xem kết quả trực tiếp trên trình duyệt.
+- **Thực thi lệnh hệ thống (@):** Chạy lệnh PowerShell (Windows) thông qua ô nhập lệnh web.
+- **Thực thi mã Python ($):** Tạo và chạy mã Python trực tiếp từ giao diện web.
+- **Xử lý file nâng cao (#):** Tương tác và xử lý file (đọc, ghi, sửa...) thông qua lệnh web.
+- **Hiển thị Kết quả Chi tiết:** Kết quả trả về được định dạng rõ ràng, phân chia theo các phần (thông báo, phân tích, output, lỗi, code...), dễ đọc và dễ hiểu trên giao diện web.
+- **Lịch sử Phiên Chat:** Lưu trữ và hiển thị lịch sử tương tác trong phiên làm việc, giúp theo dõi và xem lại các lệnh và phản hồi trước đó.
+- **Tích hợp Gemini (Google AI):** Sử dụng Gemini để xử lý ngôn ngữ tự nhiên và thực hiện các tác vụ thông minh.
+- **Hỗ trợ Memory:**  Duy trì memory phiên làm việc, cải thiện khả năng tương tác và hiểu ngữ cảnh của trợ lý ảo.
+- **Plugin Kiến trúc:** Hỗ trợ plugin tương tự phiên bản CLI, dễ dàng mở rộng chức năng.
+- **Giao diện Tùy biến:** Cho phép tùy chỉnh giao diện web qua file CSS (`static/style.css`).
+- **Thông báo Lỗi và Phân tích:** Hiển thị thông báo lỗi chi tiết và phân tích kết quả (từ Gemini 2) ngay trên giao diện web.
 
-
-3.  **Chạy ứng dụng:**
-    *  Cách 1: Chạy file `run.bat` (cách này đã bao gồm các bước tạo và kích hoạt môi trường ảo, cài thư viện)
-    ```bash
-    run.bat
-    ```
-    *  Cách 2: Chạy trực tiếp file `web_rin.py`:
-    ```bash
-    python web_rin.py
-    ```
-4.  **Cấu hình:**
-
-    *   Mở file `utils/cau_hinh.py` và cấu hình các thông số sau:
-        *   **`API_KEY`:** Thay thế bằng API key Gemini của bạn (bắt buộc).  Bạn có thể lấy API key từ Google AI Studio.
-        *   **`MODEL_NAME`:** Tên mô hình Gemini bạn muốn sử dụng (mặc định: `gemini-2.0-flash-exp`).  Bạn có thể thay đổi nếu cần.
-        *    Các tham số khác bạn có thể giữ nguyên hoặc điều chỉnh theo nhu cầu.
-
-## Hướng dẫn sử dụng chi tiết
-
-*   **Tương tác chung:**  Nhập trực tiếp câu hỏi hoặc yêu cầu vào giao diện dòng lệnh và nhấn Enter.  Rin sẽ cố gắng hiểu và trả lời.
-
-*   **Thực thi mã Python (`$`):**  Để yêu cầu Rin thực thi mã Python, hãy bắt đầu câu hỏi bằng ký tự `$`, theo sau là mã Python hoặc yêu cầu viết mã Python.
-
-    *   **Ví dụ:**
-        *   `$ print("Xin chào, thế giới!")`  (Thực thi trực tiếp mã Python)
-        *   `$ viết code python để tính tổng của hai số a và b` (Yêu cầu viết mã Python)
-
-*   **Thực thi lệnh hệ thống Windows - PowerShell (`@`):** Để yêu cầu Rin thực thi lệnh PowerShell, hãy bắt đầu câu hỏi bằng ký tự `@`, theo sau là lệnh PowerShell hoặc yêu cầu viết lệnh PowerShell.
-
-    *   **Ví dụ:**
-        *   `@ Get-Process` (Thực thi trực tiếp lệnh PowerShell)
-        *   `@ lệnh powershell để liệt kê các file trong thư mục hiện tại` (Yêu cầu viết lệnh PowerShell)
-
-*   **Xử lý tệp tin (`#`):**  Để thao tác với tệp tin, hãy bắt đầu câu hỏi bằng ký tự `#`, theo sau là đường dẫn đầy đủ đến tệp tin (đặt trong dấu nháy kép nếu đường dẫn có khoảng trắng) và yêu cầu cụ thể.
-
-    *   **Cú pháp:** `# "<đường_dẫn_tệp_tin>" <hành_động> [tham_số]`
-
-    *   **Các hành động được hỗ trợ:**
-        *   **`read file`:**  Đọc nội dung của tệp tin.
-            *   **Ví dụ:** `# "C:\Users\MyUser\Documents\test.txt" read file`
-        *   **`edit file`:** Chỉnh sửa nội dung tệp tin, hỗ trợ các thao tác:
-            *   `thay thế "<chuỗi_cũ>" bằng "<chuỗi_mới>"`
-            *   `xóa "<chuỗi_cần_xóa>"`
-            *   `thêm "<chuỗi_cần_thêm>" vào cuối`
-            *   **Ví dụ:** `# "C:\data.txt" edit file, thay thế "apple" bằng "orange", xóa "banana", thêm "grape" vào cuối`
-        *   **`write file`:**  Ghi (hoặc ghi đè) nội dung vào tệp tin.
-            *   **Ví dụ:** `# "C:\output.txt" write file với nội dung "This is the new content."`
-        *   **`create code`:**  Tạo mã Python theo yêu cầu và lưu vào tệp tin.
-             *    **Ví dụ:** `# "C:\my_script.py" create code: Viết hàm Python tính giai thừa của một số.`
-        *   **`fix_code`:** Sửa lỗi trong mã Python (nếu có) của file.
-             * **Ví dụ:** `# "C:\broken_code.py" fix_code`
-        *  **`upgrade code`:** Nâng cấp code.
-           *  **Ví dụ:** `# "C:\old_code.py" upgrade code`
-
-*   **Tải bộ nhớ (`!`):** Để tải thông tin từ một tệp tin memory đã lưu trước đó, hãy bắt đầu câu hỏi bằng ký tự `!`, theo sau là tên tệp tin memory (không cần đường dẫn đầy đủ, chỉ cần tên tệp tin).
-
-    *   **Ví dụ:** `! previous_session.json`
-
-* **Thoát chương trình:** Gõ `0` và nhấn Enter.
-
-* **Ngắt tiến trình đang chạy:** Gõ `2` và nhấn Enter.
-
-## Cấu trúc thư mục
+## 3. Cấu trúc Dự án
 
 ```
 System_Assistant_GUI/
-├── .git/               (Thư mục Git - Không liệt kê)
-├── .gitignore          (File cấu hình Git)
-├── bieutuong/          (Thư mục chứa các file biểu tượng - Không liệt kê)
-├── cac_plugin/         (Thư mục chứa các plugin)
-│   ├── thuc_thi_lenh_he_thong.py  (Plugin thực thi lệnh hệ thống)
-│   ├── thuc_thi_python.py      (Plugin thực thi mã Python)
-│   ├── xu_ly_file_plugin.py   (Plugin xử lý file)
+├── .git/             (Thư mục Git - không liệt kê khi tạo tài liệu)
+├── .gitignore        (File chỉ định các tệp/thư mục Git bỏ qua)
+├── bieutuong/         (Thư mục chứa biểu tượng, hình ảnh - không liệt kê)
+├── cac_plugin/       (Thư mục plugin chức năng)
+│   ├── thuc_thi_lenh_he_thong.py (Plugin lệnh hệ thống PowerShell)
+│   ├── thuc_thi_python.py     (Plugin mã Python)
+│   ├── xu_ly_file_plugin.py   (Plugin xử lý file nâng cao)
 │   ├── __init__.py
-│   ├── __pycache__/    (Thư mục cache - Không liệt kê)
-├── core/               (Thư mục chứa các module lõi)
-│   ├── chat.py         (Module xử lý giao tiếp với Gemini)
+│   └── __pycache__/         (Thư mục cache Python - không liệt kê)
+├── core/              (Thư mục mã nguồn core)
+│   ├── chat.py         (Module giao tiếp Gemini)
 │   ├── __init__.py
-│   ├── __pycache__/    (Không liệt kê)
-├── memory/             (Thư mục chứa các file memory - Không liệt kê)
-├── rin.py              (File Python chính của chương trình)
-├── run.bat             (File batch để chạy chương trình trên Windows)
-├── static/             (Chứa file css cho web)
-│   ├── style.css
-├── templates/          (Chứa file html giao diện)
-│   ├── index.html
-├── utils/              (Thư mục chứa các module tiện ích)
-│   ├── animation/      (Module tạo hiệu ứng animation)
-│   │   ├── hieu_ung.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__/ (Không liệt kê)
-│   ├── cau_hinh.py     (Module cấu hình)
-│   ├── nhat_ky.py      (Module ghi log)
+│   └── __pycache__/         (Thư mục cache Python - không liệt kê)
+├── memory/            (Thư mục lưu trữ memory - không liệt kê)
+├── moitruongao/       (Thư mục môi trường ảo Python - không liệt kê)
+├── rin.py             (File dòng lệnh, vẫn tồn tại để tham khảo)
+├── run.bat            (Batch script chạy CLI - không dùng cho GUI)
+├── static/            (Thư mục chứa file tĩnh cho web)
+│   ├── style.css      (File CSS tùy chỉnh giao diện web)
+├── templates/         (Thư mục chứa template HTML)
+│   ├── index.html     (Template HTML chính cho giao diện web)
+├── utils/             (Thư mục tiện ích)
+│   ├── animation/      (Thư mục hiệu ứng động)
+│   │   ├── hieu_ung.py  (Module hiệu ứng động)
+│   │   └── __init__.py
+│   │   └── __pycache__/     (Thư mục cache Python - không liệt kê)
+│   ├── cau_hinh.py     (File cấu hình)
+│   ├── nhat_ky.py      (Module nhật ký)
+│   ├── rin.bat        (Batch script phụ trợ)
 │   ├── __init__.py
-│   ├── __pycache__/    (Không liệt kê)
-├── web_rin.py          (Chương trình chạy web)
+│   └── __pycache__/     (Thư mục cache Python - không liệt kê)
+├── web_rin.py         (File mã nguồn chính cho giao diện web Flask)
 ├── __init__.py
-├── __pycache__/        (Không liệt kê)
 ```
 
-## Góp ý và Báo lỗi
+- **`.git/`, `.gitignore`, `bieutuong/`, `cac_plugin/`, `core/`, `memory/`, `moitruongao/`, `utils/__pycache__/`, `rin.py`, `run.bat`, `utils/rin.bat`, `utils/__init__.py`, `__init__.py` (cac_plugin), `core/__init__.py`**: Tương tự như cấu trúc của dự án **Assistant** CLI.
+- **`static/`**: Thư mục chứa các file tĩnh phục vụ cho giao diện web, ví dụ:
+    - **`style.css`**: File CSS để tùy chỉnh giao diện (màu sắc, bố cục...) của trang web.
+- **`templates/`**: Thư mục chứa các template HTML:
+    - **`index.html`**: File HTML template chính cho giao diện trang web của trợ lý ảo Rin. Sử dụng Jinja2 template engine để hiển thị dữ liệu động từ Python.
+- **`web_rin.py`**: File Python chính để khởi chạy ứng dụng web Flask. File này xử lý routing, logic giao diện web, và tích hợp các plugin chức năng giống như `rin.py` ở phiên bản CLI.
 
-Nếu bạn có bất kỳ góp ý, đề xuất tính năng mới, hoặc phát hiện lỗi, vui lòng tạo một "Issue" mới trên trang GitHub của dự án.
+## 4. Cài đặt
 
+### Điều kiện tiên quyết
 
+Tương tự như phiên bản dòng lệnh, bạn cần đảm bảo:
+
+1.  **Python:** Python 3.8+. [https://www.python.org/downloads/](https://www.python.org/downloads/)
+2.  **pip:** (Đi kèm Python).
+3.  **Gemini API Key:**  Cần có API key Gemini, đặt vào `utils/cau_hinh.py`.
+
+### Các bước cài đặt
+
+1. **Tải Dự án:** Tải mã nguồn dự án **System_Assistant_GUI** từ GitHub.
+
+   ```bash
+   git clone https://github.com/Rin1809/System_Assistant_GUI/
+   cd System_Assistant_GUI
+   ```
+
+2. **Tạo và Kích hoạt Môi trường Ảo:** Tương tự phiên bản CLI, tạo và kích hoạt môi trường ảo `moitruongao`. Xem lại hướng dẫn chi tiết ở phần Cài đặt của file `README.md` cho dự án **Assistant** (phiên bản CLI).
+
+3. **Cài đặt Thư viện:** Cài đặt thư viện cần thiết, bao gồm cả Flask (cho giao diện web) và các thư viện core của Rin:
+
+   ```bash
+   pip install -r requirements.txt # Nếu có file requirements.txt
+
+   # Hoặc cài thủ công nếu không có file:
+   pip install flask google-generativeai pygments python-magic python-docx openpyxl rich psutil watchdog wmi
+   ```
+
+4. **Cấu hình API Key:** Tương tự phiên bản CLI, mở `utils/cau_hinh.py` và điền API key Gemini vào biến `API_KEY`.
+
+5. **Chạy Ứng dụng Web:**
+
+   - **Windows (khuyến khích):** Chạy file `run.bat`. File này sẽ kích hoạt môi trường ảo và khởi chạy ứng dụng web Rin.
+
+   - **Mọi hệ điều hành (sau kích hoạt môi trường ảo):** Chạy lệnh:
+
+     ```bash
+     python web_rin.py
+     ```
+
+     Ứng dụng web Rin sẽ chạy. Mở trình duyệt và truy cập địa chỉ hiển thị trên dòng lệnh (thường là `http://127.0.0.1:5000/` hoặc `http://0.0.0.0:5000/`).
+
+## 5. Cách Sử dụng
+
+**Giao diện Web của Assistant (Rin Web):**
+
+Sau khi chạy `web_rin.py` hoặc `run.bat`, mở trình duyệt và truy cập địa chỉ được cung cấp. Bạn sẽ thấy giao diện web của Rin:
+
+Giao diện web bao gồm:
+
+1. **Ô Nhập Lệnh/Câu Hỏi:**  Textbox lớn ở đầu trang để bạn nhập các lệnh hoặc câu hỏi cho Rin. Sử dụng các tiền tố `@`, `$`, `#` tương tự như phiên bản CLI (mô tả ở phần Cách Sử dụng của README CLI).
+
+2. **Nút "Gửi":** Nút để gửi lệnh/câu hỏi sau khi đã nhập vào textbox.
+
+3. **Khu vực Hiển thị Output:** Phần lớn dưới ô nhập lệnh, hiển thị kết quả phản hồi từ Rin. Output được định dạng rõ ràng với các section (Thông báo, Phân tích, Output, Code, v.v.) để dễ đọc.
+
+4. **Lịch sử Phiên Chat:** Khu vực ở cuối trang, hiển thị lịch sử các tương tác trong phiên làm việc hiện tại, giúp bạn xem lại các lệnh và phản hồi trước đó.
+
+**Quy trình sử dụng:**
+
+1. **Nhập lệnh/câu hỏi:**  Gõ câu hỏi hoặc lệnh của bạn vào ô textbox. Nhớ sử dụng các tiền tố `@`, `$`, `#` để gọi các plugin chức năng cụ thể (nếu muốn).
+2. **Nhấn "Gửi":** Nhấn nút "Gửi" hoặc phím Enter để gửi lệnh/câu hỏi đến Rin.
+3. **Xem Kết quả:**  Kết quả phản hồi từ Rin sẽ được hiển thị trong khu vực "output-area" phía dưới, và lịch sử phiên chat sẽ được cập nhật ở cuối trang.
+4. **Lặp lại:** Tiếp tục nhập lệnh mới và tương tác với Rin.
+5. **Đóng Trình duyệt:** Đóng tab hoặc cửa sổ trình duyệt để kết thúc phiên làm việc (ứng dụng web Rin vẫn chạy ở server cho đến khi bạn tắt tiến trình Python).
+
+**Lưu ý:**
+
+- Giao diện web có thể được tùy chỉnh bằng cách chỉnh sửa file `static/style.css`.
+- Cách sử dụng các lệnh (tiền tố `@`, `$`, `#`, cú pháp, v.v.) tương tự như phiên bản CLI. Tham khảo phần "Cách Sử dụng" của `README.md` cho dự án **Assistant** (phiên bản dòng lệnh) để biết chi tiết.
+- Để thoát hoàn toàn ứng dụng web Rin (tắt server Flask), bạn cần dừng tiến trình Python `web_rin.py` trong dòng lệnh (ví dụ, bằng Ctrl+C).
+
+## 6. Ví dụ Sử dụng
+
+Các ví dụ sau minh họa cách tương tác với **System_Assistant_GUI (Rin Web)** qua giao diện trình duyệt:
+
+**(Lưu ý: Các ví dụ này tương tự về lệnh với phiên bản CLI, chỉ khác về giao diện tương tác là web.)**
+
+**Ví dụ 1: Hỏi thông tin thời tiết:**
+
+- Nhập vào ô textbox: `thời tiết Hà Nội ngày mai thế nào?`
+- Nhấn "Gửi".
+- Kết quả hiển thị trong khu vực "output-area":  Rin sẽ trả lời thông tin thời tiết dự báo cho Hà Nội, với định dạng web đẹp mắt.
+
+**Ví dụ 2: Mở ứng dụng bằng lệnh hệ thống:**
+
+- Nhập: `@mở máy tính`
+- Nhấn "Gửi".
+- Kết quả hiển thị:  Rin thông báo thực thi lệnh thành công, và File Explorer (This PC) sẽ được mở trên máy tính. Thông tin chi tiết (phân tích, output...) cũng hiển thị trên web.
+
+**Ví dụ 3: Lấy thông tin ổ đĩa bằng Python:**
+
+- Nhập: `$viết code python in ra dung lượng ổ đĩa C và D`
+- Nhấn "Gửi".
+- Kết quả hiển thị: Rin sẽ chạy code Python, và hiển thị thông tin dung lượng ổ đĩa C và D (kích thước, dung lượng trống...) dưới dạng bảng hoặc danh sách trên web.
+
+**Ví dụ 4: Đọc nội dung file code Python:**
+
+- Nhập: `#đọc file "core/chat.py"`
+- Nhấn "Gửi".
+- Kết quả hiển thị: Nội dung file `core/chat.py` (mã Python) sẽ được hiển thị trong khu vực output, có thể kèm syntax highlighting (tùy thuộc vào khả năng của thư viện highlight code trên web - hiện tại ví dụ không có highlight syntax).
+
+**Ví dụ 5: Chỉnh sửa file text:**
+
+- Nhập: `#sửa file "example_web.txt" thêm "--- Thêm dòng mới từ giao diện web ---" vào cuối`
+- Nhấn "Gửi".
+- Kết quả hiển thị: Thông báo chỉnh sửa file thành công, file `example_web.txt` (trong thư mục dự án) sẽ được cập nhật với dòng text mới thêm vào cuối.
+
+**Khám phá thêm:**
+
+Thử nghiệm với các lệnh khác nhau qua giao diện web, tận dụng các plugin, và tùy chỉnh giao diện để trải nghiệm toàn bộ tiềm năng của **System_Assistant_GUI (Rin Web)**.
+
+## 7. Cấu hình Nâng cao
+
+- **File cấu hình `utils/cau_hinh.py`:**  Tương tự phiên bản CLI, file này cấu hình API Key Gemini, model, nhiệt độ, các tham số Gemini, màu sắc, v.v. Các cấu hình này ảnh hưởng đến cả phiên bản web và CLI.
+
+- **Tùy chỉnh giao diện web (`static/style.css`):** Bạn có thể tùy chỉnh hoàn toàn giao diện web của Rin bằng cách chỉnh sửa file CSS `static/style.css`. Thay đổi màu sắc, font chữ, bố cục, v.v. để tạo giao diện theo ý muốn.
+
+- **Plugin kiến trúc (`cac_plugin/`):**  Phiên bản web **System_Assistant_GUI** sử dụng lại hệ thống plugin giống như bản CLI. Bạn có thể phát triển thêm plugin mới trong thư mục `cac_plugin/` để mở rộng chức năng (xem các plugin mẫu). Các plugin này sẽ hoạt động trên cả giao diện web và CLI.
+
+- **Chạy trên Port và Host khác (web_rin.py):**  Nếu muốn chạy ứng dụng web trên port hoặc host khác (ví dụ, để truy cập từ xa), bạn có thể chỉnh sửa dòng `app.run(debug=True, host='0.0.0.0', port=5000)` trong file `web_rin.py`. Thay đổi `host` và `port` theo nhu cầu. `host='0.0.0.0'` cho phép truy cập từ bên ngoài (mạng LAN), `host='127.0.0.1'` (hoặc `'localhost'`) chỉ cho phép truy cập từ máy cục bộ.
 
 </details>
 
-<!-- English -->
 <details>
-  <summary>🇬🇧 English</summary>
+<summary>🇬🇧 English</summary>
 
-## Introduction
+## 1. Introduction
 
-**Assistant - Rin** is a powerful, versatile virtual assistant built using Python and powered by Google AI's Gemini large language model (LLM).  Rin is designed to perform a wide array of tasks, including executing Python code, running on Windows, Linux handling various file types, and interacting naturally with users through a command-line interface.  A key feature of Rin is its ability to **self-assess and improve** execution results by utilizing a second Gemini model for cross-checking and validation.
+**System_Assistant_GUI** (codename **Rin Web**) is the web-based Graphical User Interface (GUI) version of the **Assistant** project. This project retains the core power of the Rin virtual assistant, utilizing the Gemini large language model, but provides a more intuitive and user-friendly web interface, allowing users to control and interact with Rin through a web browser.
 
-## Key Features
+**The main goals of System_Assistant_GUI (Rin Web):**
 
-*   **Flexible Python Code Execution:** Rin allows users to request the execution of Python code snippets directly.  The assistant automatically generates code, executes it, and returns detailed results, including output (stdout), errors (stderr), execution time, and the executed Python code.
-*   **EX : Windows System Command Execution (PowerShell):** Rin can execute PowerShell commands on the Windows operating system.  The assistant uses Gemini to generate PowerShell commands based on user requests, execute the commands, and return comprehensive results, including output, errors, return code, and most importantly, **assessment and validation from a second Gemini model**.
-*   **Versatile File Handling:** Rin offers a robust set of file handling capabilities, including:
-    *   Reading content from various file formats (text, JSON, CSV, DOCX, XLSX).
-    *   Writing content to files.
-    *   Editing file content: replacing, deleting, and adding text.
-    *   Creating new Python code and saving it to a file.
-    *   Fixing syntax and logic errors in existing Python code.
-    *   Upgrading and improving Python code.
-*   **Direct Interaction with Gemini:** Users can ask questions directly to the Gemini model to receive answers to general inquiries, unrelated to specific plugins.
-*   **Memory:** Rin can store the history of interactions, executed commands, and results in "memory" files. This allows users to reload and reuse information from previous sessions, saving time and increasing continuity.
-*   **File Monitoring (Experimental Feature):**  Rin has the ability to monitor specified files for changes and notify the user when changes occur.
-*   **User-Friendly Command-Line Interface:** Interaction with Rin is done through an intuitive command-line interface (CLI), with colors and dynamic animations to enhance the user experience.
+- **User-Friendly Experience:** Deliver a smooth and intuitive virtual assistant interaction experience through a web interface, instead of a pure command line.
+- **Easy Access:** Allow access to Rin virtual assistant from any device with a web browser, expanding usability and flexibility.
+- **Retain Core Power:** Preserve all the powerful features of the Command-Line Interface (CLI) version, including system command execution, Python code execution, file processing, and Gemini AI integration.
+- **Customizable and Extensible:** Continue to support plugin architecture, allowing for easy function expansion and customization.
 
-## Installation
+**System_Assistant_GUI (Rin Web) is intended for:**
 
-1.  **System Requirements:**
-    *   Python 3.7 or higher.
-    *   Python libraries (detailed in the `requirements.txt` file):
-        *   `google-generativeai`
-        *   `python-magic`
-        *   `psutil`
-        *   `watchdog`
-        *   `pygments`
-        *   `docx` (python-docx)
-        *   `openpyxl`
-        *   `wmi`
-        *   `ctypes`
-        *   `rich`
-        *   `Flask`
+- **Users Preferring Graphical Interfaces:** Who desire to interact with a virtual assistant via an intuitive web interface instead of a command line.
+- **Users Needing Cross-Platform Access:** Who want to use Rin virtual assistant on multiple devices (computers, tablets, phones) through a web browser.
+- **Beginner Users:** The web interface can help new users get acquainted with and use Rin's features more easily.
 
-2.  **Installation Steps:**
+## 2. Features
 
-    Open a terminal (or Command Prompt on Windows) and execute the following commands:
+**System_Assistant_GUI (Rin Web)** inherits and extends the features of the command-line version, with the web interface focusing on user experience:
 
-    ```bash
-    git clone https://github.comRin1809/System_Assistant_GUI.git 
-    cd "Name folder"
-    python -m venv virtual_environment_name
-    virtual_environment_name\Scripts\activate  # On Windows.  Or: source virtual_environment_name/bin/activate (on Linux/macOS)
-    pip install -r requirements.txt
-    ```
+- **Intuitive Web Interface:** Simple, easy-to-use web interface allows for entering commands and viewing results directly in the browser.
+- **System Command Execution (@):** Run PowerShell commands (Windows) via the web command input box.
+- **Python Code Execution ($):** Create and run Python code snippets directly from the web interface.
+- **Advanced File Processing (#):** Interact with and process files (read, write, edit...) via web commands.
+- **Detailed Result Display:**  Return results are clearly formatted, divided into sections (message, analysis, output, error, code...), easy to read and understand on the web interface.
+- **Session History:** Stores and displays interaction history within the current session, helping to track and review previous commands and responses.
+- **Gemini Integration (Google AI):** Uses the power of Gemini to understand natural language and perform intelligent tasks.
+- **Memory Support:**  Maintains session memory, improving the virtual assistant's interaction ability and context understanding.
+- **Plugin Architecture:** Plugin support similar to the CLI version, easily adding new functionalities and extensions.
+- **Customizable Interface:** Allows for customizing the web interface via CSS file (`static/style.css`).
+- **Error Notifications and Analysis:** Display detailed error messages and result analysis (from Gemini 2) directly on the web interface.
 
-
-3.  **Running the Application:**
-    *   Method 1: Run the `run.bat` file (this includes the steps to create and activate the virtual environment, install libraries).
-      ```bash
-      run.bat
-      ```
-    *  Method 2: Run the `web_rin.py` file
-    ```bash
-    python web_rin.py
-    ```
-
-4.  **Configuration:**
-
-    *   Open the `utils/cau_hinh.py` file and configure the following parameters:
-        *   **`API_KEY`:** Replace with your Gemini API key (required). You can obtain an API key from Google AI Studio.
-        *   **`MODEL_NAME`:** The name of the Gemini model you want to use (default: `gemini-2.0-flash-exp`).  You can change this if necessary.
-        *   Other parameters can be left as they are or adjusted according to your needs.
-
-## Detailed Usage Instructions
-
-*   **General Interaction:** Type your question or request directly into the command-line interface and press Enter. Rin will attempt to understand and respond.
-
-*   **Executing Python Code (`$`):** To request Rin to execute Python code, start your question with the `$` character, followed by the Python code or a request to write Python code.
-
-    *   **Examples:**
-        *   `$ print("Hello, world!")` (Execute Python code directly)
-        *   `$ write python code to calculate the sum of two numbers a and b` (Request to write Python code)
-
-*   **Executing Windows System Commands - PowerShell (`@`):** To request Rin to execute a PowerShell command, start your question with the `@` character, followed by the PowerShell command or a request to write a PowerShell command.
-
-    *   **Examples:**
-        *   `@ Get-Process` (Execute a PowerShell command directly)
-        *   `@ powershell command to list files in the current directory` (Request to write a PowerShell command)
-
-*   **File Handling (`#`):** To interact with files, start your question with the `#` character, followed by the full path to the file (enclose in double quotes if the path contains spaces) and the specific request.
-
-    *   **Syntax:** `# "<file_path>" <action> [parameters]`
-
-    *   **Supported Actions:**
-        *   **`read file`:** Read the content of the file.
-            *   **Example:** `# "C:\Users\MyUser\Documents\test.txt" read file`
-        *   **`edit file`:** Edit the file content, supporting the following operations:
-            *   `replace "<old_string>" with "<new_string>"`
-            *   `delete "<string_to_delete>"`
-            *   `add "<string_to_add>" to end`
-            *   **Example:** `# "C:\data.txt" edit file, replace "apple" with "orange", delete "banana", add "grape" to end`
-        *   **`write file`:** Write (or overwrite) content to the file.
-            *   **Example:** `# "C:\output.txt" write file with content "This is the new content."`
-        *   **`create code`:** Create Python code as requested and save it to the file.
-            *    **Example:** `# "C:\my_script.py" create code: Write a Python function to calculate the factorial of a number.`
-        *   **`fix_code`:** Fix errors in the Python code (if any) of the file.
-             * **Example:** `# "C:\broken_code.py" fix_code`
-        *   **`upgrade code`:** Upgrade the code.
-           *   **Example:**  `# "C:\old_code.py" upgrade code`
-
-*   **Loading Memory (`!`):** To load information from a previously saved memory file, start your question with the `!` character, followed by the memory file name (no need for the full path, just the file name).
-
-    *   **Example:** `! previous_session.json`
-
-*   **Exit the program:** Type `0` and press Enter.
-
-*   **Interrupt a running process:** Type `2` and press Enter.
-
-## Folder Structure
+## 3. Project Structure
 
 ```
 System_Assistant_GUI/
-├── .git/               (Git directory - Not listed)
-├── .gitignore          (Git configuration file)
-├── bieutuong/          (Directory containing icon files - Not listed)
-├── cac_plugin/         (Directory containing plugins)
-│   ├── thuc_thi_lenh_he_thong.py  (Plugin for executing system commands)
-│   ├── thuc_thi_python.py      (Plugin for executing Python code)
-│   ├── xu_ly_file_plugin.py   (Plugin for file handling)
+├── .git/             (Git Directory - not listed in documentation)
+├── .gitignore        (File specifying files/directories Git should ignore)
+├── bieutuong/         (Directory containing icons, images - not listed)
+├── cac_plugin/       (Directory of function plugins)
+│   ├── thuc_thi_lenh_he_thong.py (PowerShell system command plugin)
+│   ├── thuc_thi_python.py     (Python code plugin)
+│   ├── xu_ly_file_plugin.py   (Advanced file processing plugin)
 │   ├── __init__.py
-│   ├── __pycache__/    (Cache directory - Not listed)
-├── core/               (Directory containing core modules)
-│   ├── chat.py         (Module for handling communication with Gemini)
+│   └── __pycache__/         (Python cache directory - not listed)
+├── core/              (Core source code directory)
+│   ├── chat.py         (Gemini communication module)
 │   ├── __init__.py
-│   ├── __pycache__/    (Not listed)
-├── memory/             (Directory containing memory files - Not listed)
-├── rin.py              (Main Python file of the program)
-├── run.bat             (Batch file to run the program on Windows)
-├── static/             (Contains css file for the web)
-│   ├── style.css
-├── templates/          (Contains html interface file)
-│   ├── index.html
-├── utils/              (Directory containing utility modules)
-│   ├── animation/      (Module for creating animation effects)
-│   │   ├── hieu_ung.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__/ (Not listed)
-│   ├── cau_hinh.py     (Configuration module)
+│   └── __pycache__/         (Python cache directory - not listed)
+├── memory/            (Memory storage directory - not listed)
+├── moitruongao/       (Python virtual environment directory - not listed)
+├── rin.py             (Command-line file, still present for reference)
+├── run.bat            (Batch script to run CLI - not used for GUI)
+├── static/            (Directory for static web files)
+│   ├── style.css      (CSS file to customize web interface)
+├── templates/         (Directory for HTML templates)
+│   ├── index.html     (Main HTML template for web UI)
+├── utils/             (Utility directory)
+│   ├── animation/      (Directory for dynamic effects)
+│   │   ├── hieu_ung.py  (Dynamic effects module)
+│   │   └── __init__.py
+│   │   └── __pycache__/     (Python cache directory - not listed)
+│   ├── cau_hinh.py     (Configuration file)
 │   ├── nhat_ky.py      (Logging module)
+│   ├── rin.bat        (Auxiliary batch script)
 │   ├── __init__.py
-│   ├── __pycache__/    (Not listed)
-├── web_rin.py          (Program to run the web)
+│   └── __pycache__/     (Python cache directory - not listed)
+├── web_rin.py         (Main source file for Flask web interface)
 ├── __init__.py
-├── __pycache__/        (Not listed)
 ```
 
-## Feedback and Bug Reports
+- **`.git/`, `.gitignore`, `bieutuong/`, `cac_plugin/`, `core/`, `memory/`, `moitruongao/`, `utils/__pycache__/`, `rin.py`, `run.bat`, `utils/rin.bat`, `utils/__init__.py`, `__init__.py` (cac_plugin), `core/__init__.py`**: Similar to **Assistant** CLI project structure.
+- **`static/`**: Directory for static files serving web interface, e.g.:
+    - **`style.css`**: CSS file to customize the look and feel of the web page.
+- **`templates/`**: Directory containing HTML templates:
+    - **`index.html`**: Main HTML template for Rin web assistant UI. Uses Jinja2 template engine to render dynamic data from Python.
+- **`web_rin.py`**: Main Python file to start Flask web application. This file handles routing, web UI logic, and integrates function plugins like `rin.py` in CLI version.
 
-If you have any feedback, suggestions for new features, or find any bugs, please create a new "Issue" on the project's GitHub page.
+## 4. Installation
 
+### Prerequisites
+
+Similar to CLI version, ensure you have:
+
+1.  **Python:** Python 3.8+. [https://www.python.org/downloads/](https://www.python.org/downloads/)
+2.  **pip:** (Included with Python).
+3.  **Gemini API Key:**  Gemini API key is required, put it in `utils/cau_hinh.py`.
+
+### Installation Steps
+
+1. **Download Project:** Download **System_Assistant_GUI** project source code from GitHub (or source).
+
+   ```bash
+   git clone https://github.com/Rin1809/System_Assistant_GUI/
+   cd System_Assistant_GUI
+   ```
+
+2. **Create and Activate Virtual Environment:** Same as CLI version, create and activate `moitruongao` virtual environment. Refer to detailed instruction in "Installation" section of `README.md` for **Assistant** (CLI version).
+
+3. **Install Libraries:** Install needed Python libraries, including Flask (for web UI) and core Rin libraries:
+
+   ```bash
+   pip install -r requirements.txt # If requirements.txt file exists
+
+   # Or manual install if file is missing:
+   pip install flask google-generativeai pygments python-magic python-docx openpyxl rich psutil watchdog wmi
+   ```
+
+4. **Configure API Key:** Same as CLI, open `utils/cau_hinh.py` and fill in Gemini API key into `API_KEY` variable.
+
+5. **Run Web Application:**
+
+   - **Windows (Recommended):** Run `run.bat` file. This activates virtual environment and starts Rin web app.
+
+   - **Any OS (after activating virtual environment):** Run command:
+
+     ```bash
+     python web_rin.py
+     ```
+
+     Rin web app will run. Open browser and access the address shown in command line (usually `http://127.0.0.1:5000/` or `http://0.0.0.0:5000/`).
+
+## 5. Usage
+
+**Web Interface of Assistant (Rin Web):**
+
+After running `web_rin.py` or `run.bat`, open a browser and navigate to provided address. You'll see Rin web UI:
+
+Web interface includes:
+
+1. **Command/Question Input Box:** Large textbox at the top for you to enter commands or questions for Rin. Use prefixes `@`, `$`, `#` same as CLI version (described in "Usage" of CLI README).
+
+2. **"Send" Button:** Button to submit command/question after entering into textbox.
+
+3. **Output Display Area:** Large section below input box, displaying Rin's response results. Output is neatly formatted into sections (Message, Analysis, Output, Code, etc.) for readability.
+
+4. **Session History:** Section at the bottom, showing history of interactions in current session, helping you to track and review previous commands and responses.
+
+**Usage Procedure:**
+
+1. **Enter command/question:**  Type your question or command into the textbox. Remember to use prefixes `@`, `$`, `#` to invoke specific plugin functions (if desired).
+2. **Click "Send":** Press "Send" button or Enter key to send command/question to Rin.
+3. **View Results:**  Rin's response will be shown in "output-area" below, and session history will be updated at bottom of page.
+4. **Repeat:** Continue entering new commands and interact with Rin.
+5. **Close Browser:** Close browser tab or window to end session (Rin web app still runs on server until you terminate Python process).
+
+**Note:**
+
+- Web UI can be customized by editing `static/style.css` file.
+- Command usages (prefixes `@`, `$`, `#`, syntax etc.) are similar to CLI version. Refer to "Usage" section of `README.md` for **Assistant** (CLI version) for details.
+- To completely exit Rin web app (stop Flask server), you need to terminate `web_rin.py` Python process in command line (e.g., using Ctrl+C).
+
+## 6. Usage Examples
+
+Following examples show how to interact with **System_Assistant_GUI (Rin Web)** through web UI:
+
+**(Note: These examples are similar in commands to CLI version, only difference is web-based interaction.)**
+
+**Example 1: Asking weather information:**
+
+- Enter in textbox: `how is Hanoi weather tomorrow?`
+- Click "Send".
+- Result in "output-area": Rin will respond with weather forecast information for Hanoi, web-formatted nicely.
+
+**Example 2: Open application using system command:**
+
+- Enter: `@open calculator`
+- Click "Send".
+- Result shown: Rin confirms command execution successful, and Calculator app should open on computer. Details (analysis, output...) are also shown on web UI.
+
+**Example 3: Get disk information using Python:**
+
+- Enter: `$write python code to print disk space on C and D drives`
+- Click "Send".
+- Result shown: Rin will run Python code and display disk space info for C and D drives (size, free space...) in a table or list on the web page.
+
+**Example 4: Read content of Python code file:**
+
+- Enter: `#read file "core/chat.py"`
+- Click "Send".
+- Result shown: Content of `core/chat.py` (Python code) will be displayed in output area, possibly with syntax highlighting (syntax highlighting in example might not be present).
+
+**Example 5: Edit text file:**
+
+- Enter: `#edit file "example_web.txt" append "--- New line added from web UI ---" to end`
+- Click "Send".
+- Result shown: Confirmation of successful file editing, `example_web.txt` file (in project directory) will be updated with the new line appended to the end.
+
+**Explore Further:**
+
+Experiment with different commands through web UI, utilize plugins, and customize interface to experience full potential of **System_Assistant_GUI (Rin Web)**.
+
+## 7. Advanced Configuration
+
+- **Configuration file `utils/cau_hinh.py`:**  Same as CLI version, this file configures Gemini API Key, model, temperature, Gemini parameters, colors, etc. These configurations affect both web and CLI versions.
+
+- **Customize web interface (`static/style.css`):** You can fully customize Rin web UI by editing CSS file `static/style.css`. Change colors, fonts, layout, etc. to create desired look and feel.
+
+- **Plugin Architecture (`cac_plugin/`):**  Web version **System_Assistant_GUI** reuses plugin system like CLI. You can develop new plugins in `cac_plugin/` directory to extend functionality (see sample plugins). These plugins will work on both web and CLI interfaces.
+
+- **Run on different Port and Host (web_rin.py):**  If you want to run web app on a different port or host (e.g., for remote access), you can edit line `app.run(debug=True, host='0.0.0.0', port=5000)` in `web_rin.py` file. Change `host` and `port` as needed. `host='0.0.0.0'` allows access from outside (LAN), `host='127.0.0.1'` (or `'localhost'`) allows local access only.
 
 </details>
 
-<!-- Japanese -->
 <details>
-  <summary>🇯🇵 日本語</summary>
+<summary>🇯🇵 日本語</summary>
 
-## 概要
+## 1. はじめに
 
-**Assistant - Rin** は、Python で構築され、Google AI の Gemini 大規模言語モデル (LLM) を活用した、強力で多用途な仮想アシスタントです。Rin は、Python コードの実行、Windows, Linux システム、さまざまなファイル タイプの処理、コマンドライン インターフェイスを介したユーザーとの自然な対話など、幅広いタスクを実行できるように設計されています。Rin の主な特徴は、第 2 の Gemini モデルを利用してクロスチェックと検証を行うことで、実行結果を**自己評価および改善**できることです。
+**System_Assistant_GUI**（コード名 **Rin Web**）は、**Assistant** プロジェクトの Web ベースのグラフィカルユーザーインターフェース（GUI）バージョンです。このプロジェクトは、Gemini 大規模言語モデルを利用した仮想アシスタント Rin のコアパワーを維持しつつ、より直感的でユーザーフレンドリーな Web インターフェースを提供し、ユーザーが Web ブラウザーを介して Rin を制御および操作できるようにします。
 
-## 主要機能
+**System_Assistant_GUI（Rin Web）の主な目標:**
 
-*   **柔軟な Python コード実行:** Rin を使用すると、ユーザーは Python コード スニペットの実行を直接要求できます。アシスタントは自動的にコードを生成、実行し、出力 (stdout)、エラー (stderr)、実行時間、実行された Python コードなどの詳細な結果を返します。
-*   **EX : Windows システム コマンド実行 (PowerShell):** Rin は、Windows オペレーティング システムで PowerShell コマンドを実行できます。アシスタントは Gemini を使用して、ユーザーの要求に基づいて PowerShell コマンドを生成、実行し、出力、エラー、戻りコード、そして最も重要なことに、**第 2 の Gemini モデルからの評価と検証**を含む包括的な結果を返します。
-*   **多用途なファイル処理:** Rin は、次のような堅牢なファイル処理機能を提供します。
-    *   さまざまなファイル形式 (テキスト、JSON、CSV、DOCX、XLSX) からのコンテンツの読み取り。
-    *   ファイルへのコンテンツの書き込み。
-    *   ファイル コンテンツの編集: テキストの置換、削除、追加。
-    *   新しい Python コードを作成し、ファイルに保存します。
-    *   既存の Python コードの構文エラーとロジック エラーの修正。
-    *   Python コードのアップグレードと改善。
-*   **Gemini との直接対話:** ユーザーは Gemini モデルに直接質問して、特定のプラグインに関連しない一般的な問い合わせに対する回答を得ることができます。
-*   **メモリ:** Rin は、対話、実行されたコマンド、および結果の履歴を「メモリ」ファイルに保存できます。これにより、ユーザーは以前のセッションから情報をリロードして再利用できるため、時間を節約し、継続性を高めることができます。
-*   **ファイル監視 (実験的機能):** Rin は、指定されたファイルの変更を監視し、変更が発生したときにユーザーに通知する機能を備えています。
-*   **ユーザーフレンドリーなコマンドライン インターフェイス:** Rin との対話は、直感的なコマンドライン インターフェイス (CLI) を介して行われ、色と動的なアニメーションによってユーザー エクスペリエンスが向上します。
+- **ユーザーフレンドリーなエクスペリエンス:** 純粋なコマンドラインではなく、Web インターフェースを通じて、スムーズで直感的な仮想アシスタントインタラクションエクスペリエンスを提供します。
+- **簡単なアクセス:** Web ブラウザーを備えた任意のデバイスからの Rin 仮想アシスタントへのアクセスを可能にし、ユーザビリティと柔軟性を拡張します。
+- **コアパワーの維持:** システムコマンドの実行、Python コードの実行、ファイル処理、Gemini AI 統合など、コマンドラインインターフェース（CLI）バージョンのすべての強力な機能を保持します。
+- **カスタマイズと拡張性:** プラグインアーキテクチャのサポートを継続し、新しい機能の追加や、必要に応じた仮想アシスタントの開発を容易にします。
 
-## インストール
+**System_Assistant_GUI（Rin Web）の対象ユーザー:**
 
-1.  **システム要件:**
-    *   Python 3.7 以上。
-    *   Python ライブラリ (詳細は `requirements.txt` ファイルを参照):
-        *   `google-generativeai`
-        *   `python-magic`
-        *   `psutil`
-        *   `watchdog`
-        *   `pygments`
-        *   `docx` (python-docx)
-        *   `openpyxl`
-        *   `wmi`
-        *   `ctypes`
-        *   `rich`
-        *   `Flask`
+- **グラフィカルインターフェースを好むユーザー:** コマンドラインではなく、直感的な Web インターフェースを介して仮想アシスタントと対話したいユーザー。
+- **クロスプラットフォームアクセスを必要とするユーザー:** Web ブラウザーを介して、複数のデバイス（コンピューター、タブレット、電話）で Rin 仮想アシスタントを使用したいユーザー。
+- **初心者ユーザー:** Web インターフェースは、新しいユーザーが Rin の機能をより簡単に習得して使用するのに役立ちます。
 
-2.  **インストール手順:**
+## 2. 機能
 
-    ターミナル (または Windows のコマンド プロンプト) を開き、次のコマンドを実行します。
+**System_Assistant_GUI（Rin Web）** は、Web インターフェースでユーザーエクスペリエンスに焦点を当てた、コマンドラインバージョンの機能を継承および拡張します。
 
-    ```bash
-    git clone https://github.comRin1809/System_Assistant_GUI.git 
-    cd "Name folder"
-    python -m venv virtual_environment_name
-    virtual_environment_name\Scripts\activate  # Windows の場合。 または: source virtual_environment_name/bin/activate (Linux/macOS の場合)
-    pip install -r requirements.txt
-    ```
+- **直感的な Web インターフェース:** シンプルで使いやすい Web インターフェースにより、コマンドの入力と結果のブラウザーでの直接表示が可能です。
+- **システムコマンドの実行（@）:** Web コマンド入力ボックスを介して PowerShell コマンド（Windows）を実行します。
+- **Python コードの実行（$）:** Web インターフェースから直接 Python コードスニペットを作成および実行します。
+- **高度なファイル処理（#）:** Web コマンドを介してファイルを操作および処理（読み取り、書き込み、編集など）します。
+- **詳細な結果表示:** 戻り値の結果は明確にフォーマットされ、セクション（メッセージ、分析、出力、エラー、コードなど）に分割され、Web インターフェース上で読みやすく理解しやすくなっています。
+- **セッション履歴:** 現在のセッションでのインタラクション履歴を保存および表示し、以前のコマンドと応答を追跡および確認するのに役立ちます。
+- **Gemini 統合 (Google AI):** 自然言語を理解し、インテリジェントなタスクを実行するために Gemini の能力を活用します。
+- **メモリサポート:** セッションメモリを維持し、仮想アシスタントの対話能力とコンテキストの理解を向上させます。
+- **プラグインアーキテクチャ:** CLI バージョンと同様のプラグインサポート。新しい機能の追加や拡張が容易です。
+- **カスタマイズ可能なインターフェース:** CSS ファイル (`static/style.css`) を介して Web インターフェースをカスタマイズできます。
+- **エラー通知と分析:** 詳細なエラーメッセージと結果分析（Gemini 2 から）を Web インターフェース上に直接表示します。
 
-
-3.  **アプリケーションの実行:**
-      * 方法1: `run.bat`ファイルを実行します（仮想環境の作成、アクティブ化、必要なライブラリのインストールを含みます）。
-        ```
-        run.bat
-        ```
-     * 方法2: `web_rin.py`ファイルを実行します。
-    ```bash
-    python web_rin.py
-    ```
-
-4.  **設定:**
-
-    *   `utils/cau_hinh.py` ファイルを開き、次のパラメータを設定します。
-        *   **`API_KEY`:** あなたの Gemini API キーに置き換えます (必須)。API キーは Google AI Studio から取得できます。
-        *   **`MODEL_NAME`:** 使用する Gemini モデルの名前 (デフォルト: `gemini-2.0-flash-exp`)。必要に応じて変更できます。
-        *   その他のパラメータは、そのままにしておくか、必要に応じて調整できます。
-
-## 詳細な使用方法
-
-*   **一般的な対話:** コマンドライン インターフェイスに質問またはリクエストを直接入力し、Enter キーを押します。Rin は理解して応答しようとします。
-
-*   **Python コードの実行 (`$`):** Rin に Python コードの実行を要求するには、質問を `$` 文字で始め、その後に Python コードまたは Python コードの作成リクエストを続けます。
-
-    *   **例:**
-        *   `$ print("Hello, world!")` (Python コードを直接実行)
-        *   `$ 2 つの数値 a と b の合計を計算する Python コードを作成する` (Python コードの作成をリクエスト)
-
-*   **Windows システム コマンドの実行 - PowerShell (`@`):** Rin に PowerShell コマンドの実行を要求するには、質問を `@` 文字で始め、その後に PowerShell コマンドまたは PowerShell コマンドの作成リクエストを続けます。
-
-    *   **例:**
-        *   `@ Get-Process` (PowerShell コマンドを直接実行)
-        *   `@ 現在のディレクトリ内のファイルを一覧表示する PowerShell コマンド` (PowerShell コマンドの作成をリクエスト)
-
-*   **ファイル処理 (`#`):** ファイルを操作するには、質問を `#` 文字で始め、その後にファイルへのフルパス (パスにスペースが含まれる場合は二重引用符で囲む) と特定のリクエストを続けます。
-
-    *   **構文:** `# "<ファイルパス>" <アクション> [パラメータ]`
-
-    *   **サポートされているアクション:**
-        *   **`read file`:** ファイルの内容を読み込みます。
-            *   **例:** `# "C:\Users\MyUser\Documents\test.txt" read file`
-        *   **`edit file`:** ファイルの内容を編集します。次の操作をサポートしています。
-            *   `replace "<古い文字列>" with "<新しい文字列>"`
-            *   `delete "<削除する文字列>"`
-            *   `add "<追加する文字列>" to end`
-            *   **例:** `# "C:\data.txt" edit file, replace "apple" with "orange", delete "banana", add "grape" to end`
-        *   **`write file`:** ファイルにコンテンツを書き込みます (または上書きします)。
-            *   **例:** `# "C:\output.txt" write file with content "This is the new content."`
-        *   **`create code`:** 要求に応じて Python コードを作成し、ファイルに保存します。
-            *   **例:** `# "C:\my_script.py" create code: 数値の階乗を計算する Python 関数を記述してください。`
-        *   **`fix_code`:** ファイル内のPythonコードのエラーを修正します。
-           *   **例:** `# "C:\broken_code.py" fix_code`
-        *   **`upgrade code`:**  コードをアップグレードします。
-           *   **例:** `# "C:\old_code.py" upgrade code`
-
-*   **メモリのロード (`!`):** 以前に保存されたメモリ ファイルから情報をロードするには、質問を `!` 文字で始め、その後にメモリ ファイル名 (フルパスは不要、ファイル名のみ) を続けます。
-
-    *   **例:** `! previous_session.json`
-
-*   **プログラムを終了する:** `0` と入力して Enter キーを押します。
-
-*   **実行中のプロセスを中断する:** `2` と入力して Enter キーを押します。
-
-## フォルダ構造
+## 3. プロジェクト構造
 
 ```
 System_Assistant_GUI/
-├── .git/               (Git ディレクトリ - リストされていません)
-├── .gitignore          (Git 構成ファイル)
-├── bieutuong/          (アイコン ファイルを含むディレクトリ - リストされていません)
-├── cac_plugin/         (プラグインを含むディレクトリ)
-│   ├── thuc_thi_lenh_he_thong.py  (システム コマンドを実行するためのプラグイン)
-│   ├── thuc_thi_python.py      (Python コードを実行するためのプラグイン)
-│   ├── xu_ly_file_plugin.py   (ファイル処理用のプラグイン)
+├── .git/             (Git ディレクトリ - ドキュメントにリストされていません)
+├── .gitignore        (Git が無視するファイル/ディレクトリを指定するファイル)
+├── bieutuong/         (アイコン、画像を含むディレクトリ - リストされていません)
+├── cac_plugin/       (機能プラグインのディレクトリ)
+│   ├── thuc_thi_lenh_he_thong.py (PowerShell システムコマンドプラグイン)
+│   ├── thuc_thi_python.py     (Python コードプラグイン)
+│   ├── xu_ly_file_plugin.py   (高度なファイル処理プラグイン)
 │   ├── __init__.py
-│   ├── __pycache__/    (キャッシュ ディレクトリ - リストされていません)
-├── core/               (コア モジュールを含むディレクトリ)
-│   ├── chat.py         (Gemini との通信を処理するモジュール)
+│   └── __pycache__/         (Python キャッシュディレクトリ - リストされていません)
+├── core/              (コアソースコードディレクトリ)
+│   ├── chat.py         (Gemini 通信モジュール)
 │   ├── __init__.py
-│   ├── __pycache__/    (リストされていません)
-├── memory/             (メモリ ファイルを含むディレクトリ - リストされていません)
-├── rin.py              (プログラムのメイン Python ファイル)
-├── run.bat             (Windows でプログラムを実行するためのバッチ ファイル)
-├── static/             (Web 用の CSS ファイルが含まれています)
-│   ├── style.css
-├── templates/          (HTML インターフェイス ファイルが含まれています)
-│   ├── index.html
-├── utils/              (ユーティリティ モジュールを含むディレクトリ)
-│   ├── animation/      (アニメーション効果を作成するためのモジュール)
-│   │   ├── hieu_ung.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__/ (リストされていません)
-│   ├── cau_hinh.py     (構成モジュール)
-│   ├── nhat_ky.py      (ロギング モジュール)
+│   └── __pycache__/         (Python キャッシュディレクトリ - リストされていません)
+├── memory/            (メモリストレージディレクトリ - リストされていません)
+├── moitruongao/       (Python 仮想環境ディレクトリ - リストされていません)
+├── rin.py             (コマンドラインファイル、参照用にまだ存在)
+├── run.bat            (CLI を実行するバッチスクリプト - GUI には使用しません)
+├── static/            (静的 Web ファイルのディレクトリ)
+│   ├── style.css      (Web インターフェースをカスタマイズする CSS ファイル)
+├── templates/         (HTML テンプレートのディレクトリ)
+│   ├── index.html     (Web UI のメイン HTML テンプレート)
+├── utils/             (ユーティリティディレクトリ)
+│   ├── animation/      (動的エフェクトのディレクトリ)
+│   │   ├── hieu_ung.py  (動的エフェクトモジュール)
+│   │   └── __init__.py
+│   │   └── __pycache__/     (Python キャッシュディレクトリ - リストされていません)
+│   ├── cau_hinh.py     (構成ファイル)
+│   ├── nhat_ky.py      (ロギングモジュール)
+│   ├── rin.bat        (補助バッチスクリプト)
 │   ├── __init__.py
-│   ├── __pycache__/    (リストされていません)
-├── web_rin.py          (Web を実行するプログラム)
+│   └── __pycache__/     (Python キャッシュディレクトリ - リストされていません)
+├── web_rin.py         (Flask Web インターフェース用のメインソースファイル)
 ├── __init__.py
-├── __pycache__/        (リストされていません)
 ```
 
-## フィードバックとバグレポート
+- **`.git/`、`.gitignore`、`.bieutuong/`、`.cac_plugin/`、`.core/`、`.memory/`、`.moitruongao/`、`.utils/__pycache__/`、`.rin.py`、`.run.bat`、`.utils/rin.bat`、`.utils/__init__.py`、`.__init__.py` (cac_plugin)、`core/__init__.py`**: **Assistant** CLI プロジェクト構造と同様です。
+- **`static/`**: Web インターフェースを提供する静的ファイル用のディレクトリ。例:
+    - **`style.css`**: Web ページのルックアンドフィールをカスタマイズする CSS ファイル。
+- **`templates/`**: HTML テンプレートを含むディレクトリ:
+    - **`index.html`**: Rin Web アシスタント UI のメイン HTML テンプレート。Jinja2 テンプレートエンジンを使用して、Python からの動的データをレンダリングします。
+- **`web_rin.py`**: Flask Web アプリケーションを起動するメイン Python ファイル。このファイルはルーティング、Web UI ロジックを処理し、CLI バージョンの `rin.py` のように機能プラグインを統合します。
 
-フィードバック、新機能の提案、またはバグの発見がある場合は、プロジェクトの GitHub ページで新しい「Issue」を作成してください。
+## 4. インストール
 
+### 前提条件
 
+CLI バージョンと同様に、以下があることを確認してください。
+
+1.  **Python:** Python 3.8 以降。[https://www.python.org/downloads/](https://www.python.org/downloads/) からダウンロードできます。
+2.  **pip:** (Python に付属).
+3.  **Gemini API キー:**  Gemini API キーが必要です。`utils/cau_hinh.py` に入力してください。
+
+### インストール手順
+
+1. **プロジェクトのダウンロード:** **System_Assistant_GUI** プロジェクトのソースコードを GitHub (またはその他のソース) からダウンロードします。
+
+   ```bash
+   git clone https://github.com/Rin1809/System_Assistant_GUI/
+   cd System_Assistant_GUI
+   ```
+
+2. **仮想環境の作成とアクティブ化 (推奨):** CLI バージョンと同様に、`moitruongao` 仮想環境を作成してアクティブ化します。**Assistant**（CLI バージョン）の `README.md` の「インストール」セクションで詳細な手順を参照してください。
+
+3. **ライブラリのインストール:** Flask（Web UI 用）と Rin コアライブラリを含む、必要な Python ライブラリをインストールします。
+
+   ```bash
+   pip install -r requirements.txt  # requirements.txt ファイルが存在する場合
+
+   # または requirements.txt が存在しない場合は手動でインストール:
+   pip install flask google-generativeai pygments python-magic python-docx openpyxl rich psutil watchdog wmi
+   ```
+
+4. **API キーの設定:** CLI と同様に、`utils/cau_hinh.py` を開き、`API_KEY = "YOUR_API_KEY_HERE"` 変数に Gemini API キーを入力します。
+
+5. **アプリケーションの実行:**
+
+   - **Windows（推奨）:** `run.bat` ファイルを実行します。これにより、仮想環境がアクティブになり、Rin Web アプリケーションが起動します。
+
+   - **任意の OS (仮想環境をアクティブ化した後):** 次のコマンドを実行します。
+
+     ```bash
+     python web_rin.py
+     ```
+
+     Rin Web アプリケーションが実行されます。ブラウザを開き、コマンドラインに表示されているアドレス (通常は `http://127.0.0.1:5000/` または `http://0.0.0.0:5000/`) にアクセスします。
+
+## 6. 使用方法
+
+**Assistant (Rin Web) の Web インターフェース:**
+
+`web_rin.py` または `run.bat` を実行した後、ブラウザを開き、提供されたアドレスに移動します。Rin Web UI が表示されます。
+
+Web インターフェースには以下が含まれます。
+
+1. **コマンド/質問入力ボックス:** 最上部にある大きなテキストボックス。ここに Rin へのコマンドまたは質問を入力します。CLI バージョンと同じように、プレフィックス `@`、`$`、`#` を使用します (CLI README の「使用法」を参照)。
+
+2. **[送信] ボタン:** テキストボックスに入力後、コマンド/質問を送信するためのボタン。
+
+3. **出力表示エリア:** 入力ボックスの下にある大きなセクション。Rin からの応答結果を表示します。出力は、Web インターフェース上で読みやすく理解しやすいように、セクション（メッセージ、分析、出力、コードなど）にきちんとフォーマットされています。
+
+4. **セッション履歴:** 下部にあるセクション。現在のセッションでの対話履歴が表示され、以前のコマンドと応答を追跡および確認できます。
+
+**使用手順:**
+
+1. **コマンド/質問を入力:** テキストボックスに質問またはコマンドを入力します。特定のプラグイン機能を呼び出すには、プレフィックス `@`、`$`、`#` を使用してください（必要に応じて）。
+2. **[送信] をクリック:** [送信] ボタンまたは Enter キーをクリックして、コマンド/質問を Rin に送信します。
+3. **結果の確認:** Rin からの応答結果が下の「出力エリア」に表示され、セッション履歴がページ下部に更新されます。
+4. **繰り返す:** 新しいコマンドの入力を継続し、Rin と対話します。
+5. **ブラウザを閉じる:** セッションを終了するには、ブラウザータブまたはウィンドウを閉じます（Rin Web アプリは、Python プロセスを終了するまでサーバー上で実行され続けます）。
+
+**注:**
+
+- Web UI は `static/style.css` ファイルを編集することでカスタマイズできます。
+- コマンドの使用法 (プレフィックス `@`、`$`、`#`、構文など) は CLI バージョンと同様です。詳細については、**Assistant** (CLI バージョン) の `README.md` の「使用法」セクションを参照してください。
+- Rin Web アプリケーションを完全に終了する (Flask サーバーを停止する) には、コマンドラインで `web_rin.py` Python プロセスを停止する必要があります (たとえば、Ctrl + C を使用)。
+
+## 6. 使用例
+
+以下の使用例は、Web インターフェースを介して **System_Assistant_GUI (Rin Web)** と対話する方法を示しています。
+
+**(注: これらの例はコマンドに関して CLI バージョンと似ていますが、対話型インターフェースが Web ベースである点が異なります。)**
+
+**例 1: 天気情報を尋ねる:**
+
+- テキストボックスに入力: `明日のハノイの天気は？`
+- [送信] をクリックします。
+- 結果は「出力エリア」に表示されます: Rin はハノイの天気予報情報を、Web 形式で美しく返答します。
+
+**例 2: システムコマンドを使用してアプリケーションを開く:**
+
+- 入力: `@電卓を開く`
+- [送信] をクリックします。
+- 結果表示: Rin はコマンドの実行成功を確認し、電卓アプリがコンピュータ上で開かれます。詳細情報（分析、出力など）も Web UI に表示されます。
+
+**例 3: Python を使用してディスク情報を取得する:**
+
+- 入力: `$C ドライブと D ドライブのディスク容量を印刷する python コードを記述`
+- [送信] をクリックします。
+- 結果表示: Rin は Python コードを実行し、C ドライブと D ドライブのディスク容量情報（サイズ、空き容量など）を Web ページ上の表またはリスト形式で表示します。
+
+**例 4: Python コードファイルの内容を読み取る:**
+
+- 入力: `#ファイル "core/chat.py" を読み取り`
+- [送信] をクリックします。
+- 結果表示: `core/chat.py` ファイルの内容 (Python コード) が出力エリアに表示され、シンタックスハイライト表示される場合があります (現在の例ではシンタックスハイライトは表示されません)。
+
+**例 5: テキストファイルを編集する:**
+
+- 入力: `#ファイル "example_web.txt" を編集し、"--- Web UI から新しい行を追加 ---" を末尾に追加`
+- [送信] をクリックします。
+- 結果表示: ファイル編集成功の確認メッセージが表示され、`example_web.txt` ファイル (プロジェクトディレクトリ内) が末尾に新しく追加されたテキスト行で更新されます。
+
+**さらに詳しく調べる:**
+
+Web UI 経由でさまざまなコマンドを試したり、プラグインを活用したり、インターフェースをカスタマイズしたりして、**System_Assistant_GUI (Rin Web)** のすべての可能性を探求してください。
+
+## 7. 高度な設定
+
+- **構成ファイル `utils/cau_hinh.py`:**  CLI バージョンと同様に、このファイルは Gemini API キー、モデル、温度、Gemini パラメータ、色などを構成します。これらの構成は、Web バージョンと CLI バージョンの両方に影響します。
+
+- **Web インターフェースのカスタマイズ (`static/style.css`):** CSS ファイル `static/style.css` を編集することで、Rin の Web UI を完全にカスタマイズできます。色、フォント、レイアウトなどを変更して、目的のルックアンドフィールを作成します。
+
+- **プラグインアーキテクチャ (`cac_plugin/`):**  Web バージョン **System_Assistant_GUI** は、CLI バージョンと同じプラグインシステムを再利用します。`cac_plugin/` ディレクトリに新しいプラグインを開発して機能を拡張できます (サンプルプラグインを参照)。これらのプラグインは、Web インターフェースと CLI インターフェースの両方で動作します。
+
+- **別のポートとホストで実行する (web_rin.py):**  Web アプリケーションを別のポートまたはホスト (たとえば、リモートアクセス用) で実行する場合は、`web_rin.py` ファイルの `app.run(debug=True, host='0.0.0.0', port=5000)` 行を編集できます。必要に応じて `host` と `port` を変更します。`host='0.0.0.0'` は外部 (LAN) からのアクセスを許可し、`host='127.0.0.1'` (または `'localhost'`) はローカルマシンからのアクセスのみを許可します。
 
 </details>
