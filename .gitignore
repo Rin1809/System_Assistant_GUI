@@ -19,9 +19,6 @@ env/
 .DS_Store  # macOS
 Thumbs.db  # Windows
 
-# File cấu hình cá nhân (personal configuration files)
-.env      # Chứa các biến môi trường nhạy cảm như API key
-config.ini # Hoặc bất kỳ file cấu hình cá nhân nào khác
 
 # File log
 *.log
