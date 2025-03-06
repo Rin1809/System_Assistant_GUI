@@ -33,7 +33,7 @@ TEMP = 0.7
 TOP_P = 0.95
 TOP_K = 40
 MAX_OUTPUT_TOKENS = 8192 #giam xuon == nhanh hon
-API_KEY = "AIzaSyCFmeHgOho-pX0sFfBoGYEuP0FEMHuBoWc"
+API_KEY = "Yourkey" #dat API key o day
 
 SUCCESS = f"{GREEN}✔{RESET}"
 FAIL = f"{RED}❌{RESET}"
